@@ -1,0 +1,50 @@
+{
+  "name": "diff-run",
+  "version": "0.0.0",
+  "description": "run command after git merge",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "cross-env BABEL_ENV=development dumi dev",
+    "lint": "eslint . --ext=.ts,.tsx",
+    "lint:fix": "eslint . --ext=.ts,.tsx --fix",
+    "test": "jest",
+    "prebuild": "npm test",
+    "build": "cross-env BABEL_ENV=commonjs babel src -d lib --extensions .ts,.tsx --delete-dir-on-start",
+    "postbuild": "npm run build:types",
+    "build:types": "tsc --declarationDir lib",
+    "build:docs": "dumi build",
+    "preversion": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kagawagao/diff-run.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "prettier": "@opd/prettier-config-pangu",
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@opd/babel-preset-lib": "^1.13.6",
+    "@opd/eslint-config-pangu": "^1.13.7",
+    "@opd/jest-preset-pangu": "^1.13.8",
+    "@opd/prettier-config-pangu": "^1.13.6",
+    "@types/debug": "^4.1.7",
+    "@types/signale": "^1.4.2",
+    "cross-env": "^7.0.3",
+    "typescript": "^3.9.10"
+  },
+  "dependencies": {
+    "@types/command-exists": "^1.2.0",
+    "chalk": "^4.1.2",
+    "command-exists": "^1.2.9",
+    "commander": "^8.2.0",
+    "cosmiconfig": "^7.0.1",
+    "debug": "^4.3.2",
+    "git-repo-info": "^2.1.1",
+    "please-upgrade-node": "^3.2.0",
+    "signale": "^1.4.0"
+  },
+  "engines": {
+    "node": ">= 14.x"
+  }
+}

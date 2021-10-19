@@ -4,9 +4,9 @@ module.exports = [
     '*.ts': ['sleep 3'],
   },
   {
-    '*.ts': ['echo "test"'],
+    '*.ts': ['sleep 2'],
   },
   {
-    '*.ts': ['echo "last"'],
+    '*.ts': ['sleep 1'],
   },
 ]

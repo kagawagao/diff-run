@@ -64,5 +64,8 @@
     "*.{json,md}": [
       "prettier --write"
     ]
+  },
+  "diffrun": {
+    "package.json,package-lock.json,": "npm ci"
   }
 }

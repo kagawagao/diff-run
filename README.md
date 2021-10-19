@@ -4,10 +4,8 @@
 
 [![build](https://github.com/kagawagao/diff-run/actions/workflows/build.yml/badge.svg)](https://github.com/kagawagao/diff-run/actions/workflows/build.yml)
 [![version](https://badgen.net/npm/v/diff-run)](https://www.npmjs.com/package/diff-run)
-[![version](https://badgen.net/npm/license/diff-run)](https://www.npmjs.com/package/diff-run)
-[![version](https://badgen.net/npm/node/diff-run)](https://www.npmjs.com/package/diff-run)
-[![version](https://badgen.net/npm/dm/diff-run)](https://www.npmjs.com/package/diff-run)
-[![version](https://badgen.net/npm/types/diff-run)](https://www.npmjs.com/package/diff-run)
+[![license](https://badgen.net/npm/license/diff-run)](https://www.npmjs.com/package/diff-run)
+[![node](https://badgen.net/npm/node/diff-run)](https://www.npmjs.com/package/diff-run)
 
 ## Usage
 

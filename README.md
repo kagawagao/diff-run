@@ -1,6 +1,6 @@
 # Diff Run
 
-> run command after file change, use with `post-merge` hook
+> run command after file reversion change, use with `post-merge` hook
 
 ## Usage
 

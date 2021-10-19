@@ -15,6 +15,7 @@
     "build:docs": "dumi build",
     "preversion": "npm run build",
     "postversion": "npm publish",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postpublish": "git push --follow-tags"
   },
   "repository": {

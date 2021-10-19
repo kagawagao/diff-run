@@ -1,12 +1,22 @@
 import debug from './debug'
+import path from 'path'
 import { exec } from 'child_process'
 import signale from 'signale'
 import chalk from 'chalk'
 import { promisify } from 'util'
+import { cosmiconfig } from 'cosmiconfig'
+import microMatch from 'micromatch'
+import { Listr } from 'listr2'
+import fs from 'fs'
 import { getRepoInfo } from './utils'
+import { CosmiconfigResult } from 'cosmiconfig/dist/types'
+
+const configExplore = cosmiconfig('diffrun')
 
 export interface DiffRunOptions {
   debug?: boolean
+  cwd?: string
+  path?: string
 }
 
 const getChangeset = async () => {
@@ -17,18 +27,31 @@ const getChangeset = async () => {
   debug('repo info:', JSON.stringify(repoInfo, null, 2))
   if (!repoInfo.sha) {
     signale.info('No reversion found in current repo')
+    return []
   } else {
+    const { commonGitDir } = repoInfo
+
+    const origHeadFilePath = path.resolve(commonGitDir, 'ORIG_HEAD')
+    const headFilePath = path.resolve(commonGitDir, 'HEAD')
+
+    const reversions = []
+
+    if (fs.existsSync(headFilePath)) {
+      reversions.push('HEAD')
+    } else {
+      reversions.push(repoInfo.sha)
+    }
+
+    if (fs.existsSync(origHeadFilePath)) {
+      reversions.unshift('ORIG_HEAD')
+    }
+
     try {
-      const { stdout } = await promisify(exec)(`git rev-list --count HEAD`)
-      const commitCount = parseInt(stdout.trim())
-      if (commitCount < 2) {
-        return []
-      }
-      const { stdout: changeset } = await promisify(exec)(
-        'git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD'
+      const { stdout } = await promisify(exec)(
+        `git diff-tree -r --name-only --no-commit-id ${reversions.join(' ')}`
       )
 
-      return changeset
+      return stdout.trim().split('\n')
     } catch (error) {
       signale.error(
         'get changeset error: %s',
@@ -42,9 +65,73 @@ const getChangeset = async () => {
 const diffRun = async (options: DiffRunOptions = {}) => {
   debug('diff-run started')
 
-  const changeset = await getChangeset()
+  const { cwd = process.cwd(), path: configPath } = options
+  let searchResult: CosmiconfigResult
+  if (configPath) {
+    searchResult = await configExplore.load(configPath)
+  } else {
+    searchResult = await configExplore.search()
+  }
 
-  console.log(changeset)
+  if (!searchResult) {
+    process.exit(0)
+  } else {
+    const { config } = searchResult
+    const configChain = Array.isArray(config) ? config : [config]
+    const changeset = await getChangeset()
+    const task = new Listr<any>(
+      configChain.map((config, index) => {
+        return {
+          title: `Task ${index + 1}`,
+          exitOnError: true,
+          task: (_, task) => {
+            return task.newListr(
+              Object.keys(config).map((pattern) => {
+                return {
+                  title: pattern,
+                  skip: () => {
+                    const matches = microMatch(changeset, pattern, {
+                      cwd,
+                      dot: true,
+                      matchBase: !pattern.includes('/'),
+                    })
+                    return !matches.length
+                  },
+                  exitOnError: true,
+                  task: async (_, task) => {
+                    let commands: string[] | string = config[pattern]
+                    commands = Array.isArray(commands) ? commands : [commands]
+                    return task.newListr(
+                      commands.map((command) => {
+                        return {
+                          title: command,
+                          task: async (_, task) => {
+                            await promisify(exec)(command)
+                          },
+                        }
+                      }),
+                      {
+                        concurrent: false,
+                      }
+                    )
+                  },
+                }
+              }),
+              {
+                concurrent: true,
+              }
+            )
+          },
+        }
+      }),
+      {
+        concurrent: false,
+      }
+    )
+    try {
+      await task.run()
+    } catch (error) {}
+  }
 }
 
 export default diffRun

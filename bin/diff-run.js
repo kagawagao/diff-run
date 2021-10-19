@@ -19,6 +19,8 @@ const debug = _debug('diff-run')
 
 program
   .version(pkg.version)
+  .option('-p, --path', 'specific config file path')
+  .option('-c, --cwd', 'specific work directory')
   .option('-d, --debug', 'enable debug mode')
   .parse(process.argv)
 

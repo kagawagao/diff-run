@@ -13,7 +13,9 @@
     "postbuild": "npm run build:types",
     "build:types": "tsc --declarationDir lib",
     "build:docs": "dumi build",
-    "preversion": "npm run build"
+    "preversion": "npm run build",
+    "postversion": "npm publish",
+    "postpublish": "git push --follow-tags"
   },
   "repository": {
     "type": "git",
@@ -24,13 +26,18 @@
   "prettier": "@opd/prettier-config-pangu",
   "devDependencies": {
     "@babel/cli": "^7.14.3",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "@opd/babel-preset-lib": "^1.13.6",
     "@opd/eslint-config-pangu": "^1.13.7",
     "@opd/jest-preset-pangu": "^1.13.8",
     "@opd/prettier-config-pangu": "^1.13.6",
     "@types/debug": "^4.1.7",
+    "@types/micromatch": "^4.0.2",
     "@types/signale": "^1.4.2",
     "cross-env": "^7.0.3",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.3",
     "typescript": "^3.9.10"
   },
   "dependencies": {
@@ -41,10 +48,20 @@
     "cosmiconfig": "^7.0.1",
     "debug": "^4.3.2",
     "git-repo-info": "^2.1.1",
+    "listr2": "^3.12.2",
+    "micromatch": "^4.0.4",
     "please-upgrade-node": "^3.2.0",
     "signale": "^1.4.0"
   },
   "engines": {
     "node": ">= 14.x"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   }
 }

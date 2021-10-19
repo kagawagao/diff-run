@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/kagawagao/diff-run/compare/v1.0.3...v1.0.4) (2021-10-19)
+
+### Features
+
+- bundle runtime ([74b9b71](https://github.com/kagawagao/diff-run/commit/74b9b716ce79dd29c44aa1603ec1847f0af0e617))
+
 ## [1.0.3](https://github.com/kagawagao/diff-run/compare/v1.0.2...v1.0.3) (2021-10-19)
 
 ### Bug Fixes

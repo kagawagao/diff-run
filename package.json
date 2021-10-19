@@ -36,6 +36,7 @@
     "@types/debug": "^4.1.7",
     "@types/micromatch": "^4.0.2",
     "@types/signale": "^1.4.2",
+    "conventional-changelog-cli": "^2.1.1",
     "cross-env": "^7.0.3",
     "husky": "^7.0.2",
     "lint-staged": "^11.2.3",

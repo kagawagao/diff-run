@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/kagawagao/diff-run/compare/v1.0.2...v1.0.3) (2021-10-19)
+
+### Bug Fixes
+
+- add @babel/runtime into deps ([39f1fc7](https://github.com/kagawagao/diff-run/commit/39f1fc7cb40085dea561fb8eaf680386f6cc212a))
+- fix diff-run config ([6441198](https://github.com/kagawagao/diff-run/commit/64411984f3110efd7522a7f5f4912e699dc1382a))
+
 ## [1.0.2](https://github.com/kagawagao/diff-run/compare/v1.0.1...v1.0.2) (2021-10-19)
 
 ## 1.0.1 (2021-10-19)

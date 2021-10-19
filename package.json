@@ -1,6 +1,6 @@
 {
   "name": "diff-run",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "run command after git merge",
   "keywords": [
     "diff-run",

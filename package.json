@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "run command after git merge",
   "main": "lib/index.js",
+  "bin": "./bin/diff-run.js",
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "dev": "cross-env BABEL_ENV=development dumi dev",
     "lint": "eslint . --ext=.ts,.tsx",
@@ -22,7 +27,7 @@
     "type": "git",
     "url": "git@github.com:kagawagao/diff-run.git"
   },
-  "author": "",
+  "author": "kagawagao <kingsongao1221@gmail.com>",
   "license": "MIT",
   "prettier": "@opd/prettier-config-pangu",
   "devDependencies": {

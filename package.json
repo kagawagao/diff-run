@@ -2,6 +2,7 @@
   "name": "diff-run",
   "version": "1.0.1",
   "description": "run command after git merge",
+  "keywords": ["diff-run", "diffrun", "git", "husky", "hook", "git-hook"],
   "main": "lib/index.js",
   "bin": "./bin/diff-run.js",
   "files": [

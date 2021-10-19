@@ -32,13 +32,45 @@ npx diff-run
 support all configurations which support by [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig)
 
 - `diffrun` in `package.json`
+
+```json
+{
+  "diffrun": {
+    "package-lock.json": "npm ci"
+  }
+}
+```
+
 - a JSON or YAML, extensionless "rc file", such as `.diffrunrc`
+
+```json
+{
+  "package-lock.json": "npm ci"
+}
+```
+
 - an "rc file" with the extensions .json, .yaml, .yml, .js, or .cjs, such as `diffrunrc.json`
+
+```json
+{
+  "package-lock.json": "npm ci"
+}
+```
+
 - a `diffrun.config.js` or `diffrun.config.cjs` CommonJS module
+
+```javascript
+module.exports = {
+  'package-lock.json': ['npm ci'],
+}
+```
 
 config in `Array` will be executed in order. Otherwise, it will be executed concurrently
 
+- In Order
+
 ```javascript
+// this will be executed in order
 module.exports = [
   {
     'package.json': ['npm ci'],
@@ -49,7 +81,10 @@ module.exports = [
 ]
 ```
 
+- Concurrently
+
 ```javascript
+// this will be executed concurrently
 module.exports = {
   'package.json': ['npm ci'],
   '.eslintrc.js': 'npx eslint .',

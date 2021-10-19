@@ -1,3 +1,5 @@
+## [1.0.2](https://github.com/kagawagao/diff-run/compare/v1.0.1...v1.0.2) (2021-10-19)
+
 ## 1.0.1 (2021-10-19)
 
 ### Bug Fixes

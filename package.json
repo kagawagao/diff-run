@@ -1,6 +1,6 @@
 {
   "name": "diff-run",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "run command after git merge",
   "main": "lib/index.js",
   "bin": "./bin/diff-run.js",

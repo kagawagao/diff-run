@@ -80,6 +80,6 @@
     ]
   },
   "diffrun": {
-    "package.json,package-lock.json,": "npm ci"
+    "package-lock.json,": "npm ci"
   }
 }

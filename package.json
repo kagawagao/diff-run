@@ -46,6 +46,7 @@
     "@opd/eslint-config-pangu": "^1.13.7",
     "@opd/jest-preset-pangu": "^1.13.8",
     "@opd/prettier-config-pangu": "^1.13.6",
+    "@types/command-exists": "^1.2.0",
     "@types/debug": "^4.1.7",
     "@types/micromatch": "^4.0.2",
     "@types/signale": "^1.4.2",
@@ -56,7 +57,6 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@types/command-exists": "^1.2.0",
     "chalk": "^4.1.2",
     "command-exists": "^1.2.9",
     "commander": "^8.2.0",

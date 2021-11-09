@@ -1,7 +1,7 @@
 module.exports = [
   {
-    'package.json': 'sleep 3',
-    '*.ts': ['sleep 3'],
+    'package.json': 'sleep 1',
+    '*.ts': ['sleep 1'],
   },
   {
     '*.ts': ['sleep 2'],

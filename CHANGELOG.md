@@ -1,3 +1,9 @@
+## [1.0.5](https://github.com/kagawagao/diff-run/compare/v1.0.4...v1.0.5) (2021-11-09)
+
+### Features
+
+- add top task ([ce378dd](https://github.com/kagawagao/diff-run/commit/ce378dd1d96b87c6405b6ca6933a780f8fae2807))
+
 ## [1.0.4](https://github.com/kagawagao/diff-run/compare/v1.0.3...v1.0.4) (2021-10-19)
 
 ### Features

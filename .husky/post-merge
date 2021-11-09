@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-node ../bin/diff-run.js
+node ./bin/diff-run.js

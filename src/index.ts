@@ -79,55 +79,64 @@ const diffRun = async (options: DiffRunOptions = {}) => {
     const { config } = searchResult
     const configChain = Array.isArray(config) ? config : [config]
     const changeset = await getChangeset()
-    const task = new Listr<any>(
-      configChain.map((config, index) => {
-        return {
-          title: `Task ${index + 1}`,
-          exitOnError: true,
-          task: (_, task) => {
-            return task.newListr(
-              Object.keys(config).map((pattern) => {
-                return {
-                  title: pattern,
-                  skip: () => {
-                    const matches = microMatch(changeset, pattern, {
-                      cwd,
-                      dot: true,
-                      matchBase: !pattern.includes('/'),
-                    })
-                    return !matches.length
-                  },
-                  exitOnError: true,
-                  task: async (_, task) => {
-                    let commands: string[] | string = config[pattern]
-                    commands = Array.isArray(commands) ? commands : [commands]
-                    return task.newListr(
-                      commands.map((command) => {
-                        return {
-                          title: command,
-                          task: async (_, task) => {
-                            await promisify(exec)(command)
-                          },
-                        }
-                      }),
-                      {
-                        concurrent: false,
-                      }
-                    )
-                  },
-                }
-              }),
-              {
-                concurrent: true,
-              }
-            )
-          },
-        }
-      }),
+    const task = new Listr<any>([
       {
-        concurrent: false,
-      }
-    )
+        title: 'Running diff-run tasks',
+        task: (_, task) => {
+          return task.newListr(
+            configChain.map((config, index) => {
+              return {
+                title: `Task ${index + 1}`,
+                exitOnError: true,
+                task: (_, task) => {
+                  return task.newListr(
+                    Object.keys(config).map((pattern) => {
+                      return {
+                        title: pattern,
+                        skip: () => {
+                          const matches = microMatch(changeset, pattern, {
+                            cwd,
+                            dot: true,
+                            matchBase: !pattern.includes('/'),
+                          })
+                          return !matches.length
+                        },
+                        exitOnError: true,
+                        task: async (_, task) => {
+                          let commands: string[] | string = config[pattern]
+                          commands = Array.isArray(commands)
+                            ? commands
+                            : [commands]
+                          return task.newListr(
+                            commands.map((command) => {
+                              return {
+                                title: command,
+                                task: async (_, task) => {
+                                  await promisify(exec)(command)
+                                },
+                              }
+                            }),
+                            {
+                              concurrent: false,
+                            }
+                          )
+                        },
+                      }
+                    }),
+                    {
+                      concurrent: true,
+                    }
+                  )
+                },
+              }
+            }),
+            {
+              concurrent: false,
+            }
+          )
+        },
+      },
+    ])
     try {
       await task.run()
     } catch (error) {}

@@ -63,7 +63,7 @@
     "cosmiconfig": "^7.0.1",
     "debug": "^4.3.2",
     "git-repo-info": "^2.1.1",
-    "listr2": "^3.12.2",
+    "listr2": "^4.0.0",
     "micromatch": "^4.0.4",
     "please-upgrade-node": "^3.2.0",
     "signale": "^1.4.0"

@@ -111,7 +111,7 @@ const diffRun = async (options: DiffRunOptions = {}) => {
                             commands.map((command) => {
                               return {
                                 title: command,
-                                task: async (_, task) => {
+                                task: async () => {
                                   await promisify(exec)(command)
                                 },
                               }

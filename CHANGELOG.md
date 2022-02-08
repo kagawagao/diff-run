@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/kagawagao/diff-run/compare/v1.0.5...v1.0.6) (2022-02-08)
+
+### Bug Fixes
+
+- fix ts error ([cac0871](https://github.com/kagawagao/diff-run/commit/cac0871b0fc5883d00736a35a2b92949bd1287e1))
+
 ## [1.0.5](https://github.com/kagawagao/diff-run/compare/v1.0.4...v1.0.5) (2021-11-09)
 
 ### Features

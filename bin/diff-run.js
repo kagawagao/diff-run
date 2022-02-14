@@ -15,13 +15,13 @@ require('please-upgrade-node')(pkg, {
   },
 })
 
-const debug = _debug('diff-run')
-
 program
   .version(pkg.version)
   .option('-p, --path', 'specific config file path')
   .option('-c, --cwd', 'specific work directory')
   .option('-d, --debug', 'enable debug mode')
+  .option('-a, --auto', 'auto run tasks', true)
+  .option('--no-auto', 'disable auto run tasks')
   .parse(process.argv)
 
 const options = program.opts()
@@ -30,6 +30,7 @@ if (options.debug) {
   _debug.enable('diff-run*')
 }
 
-debug(`Running ${chalk.blueBright('diff-run@%s')}`, pkg.version)
-
-diffRun(options)
+diffRun({
+  ...options,
+  version: pkg.version,
+})

@@ -7,6 +7,7 @@ describe('test', () => {
     try {
       await diffRun({
         path: path.resolve(__dirname, './fixtures/diffrun.config.js'),
+        auto: true,
       })
     } catch (error) {
       fn()

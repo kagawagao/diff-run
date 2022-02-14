@@ -10,6 +10,7 @@ import { Listr } from 'listr2'
 import fs from 'fs'
 import { getRepoInfo } from './utils'
 import { CosmiconfigResult } from 'cosmiconfig/dist/types'
+import inquire from 'inquirer'
 
 const configExplore = cosmiconfig('diffrun')
 
@@ -17,6 +18,8 @@ export interface DiffRunOptions {
   debug?: boolean
   cwd?: string
   path?: string
+  auto?: boolean
+  version?: string
 }
 
 const getChangeset = async () => {
@@ -65,7 +68,12 @@ const getChangeset = async () => {
 const diffRun = async (options: DiffRunOptions = {}) => {
   debug('diff-run started')
 
-  const { cwd = process.cwd(), path: configPath } = options
+  const {
+    cwd = process.cwd(),
+    path: configPath,
+    version,
+    auto = true,
+  } = options
   let searchResult: CosmiconfigResult
   if (configPath) {
     searchResult = await configExplore.load(configPath)
@@ -137,8 +145,23 @@ const diffRun = async (options: DiffRunOptions = {}) => {
         },
       },
     ])
+    let shouldRun = false
+    if (auto) {
+      shouldRun = true
+    } else {
+      const result = await inquire.prompt({
+        type: 'confirm',
+        name: 'run',
+        message: 'Run diff-run tasks right now?',
+        default: true,
+      })
+      shouldRun = result.run
+    }
     try {
-      await task.run()
+      debug(`Running ${chalk.blueBright('diff-run@%s')}`, version)
+      if (shouldRun) {
+        await task.run()
+      }
     } catch (error) {}
   }
 }

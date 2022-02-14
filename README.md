@@ -27,6 +27,8 @@ npm i diff-run
 npx diff-run
 ```
 
+> FYI, add `--no-auto` flag will disable auto-run
+
 ## Config
 
 support all configurations which support by [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig)

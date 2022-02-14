@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/kagawagao/diff-run/compare/v1.0.6...v1.1.0) (2022-02-14)
+
+### Features
+
+- add auto flag ([b0bcb52](https://github.com/kagawagao/diff-run/commit/b0bcb528840fbb374b65804e0d259c12217a16ac)), closes [#45](https://github.com/kagawagao/diff-run/issues/45)
+
 ## [1.0.6](https://github.com/kagawagao/diff-run/compare/v1.0.5...v1.0.6) (2022-02-08)
 
 ### Bug Fixes

@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/kagawagao/diff-run/compare/v1.1.0...v1.1.1) (2022-04-19)
+
+
+### Bug Fixes
+
+* fix severity vulnerability ([394b6bd](https://github.com/kagawagao/diff-run/commit/394b6bda70458fdf0387b84fce8ab62445d70d5b))
+
+
+
 # [1.1.0](https://github.com/kagawagao/diff-run/compare/v1.0.6...v1.1.0) (2022-02-14)
 
 ### Features

@@ -48,7 +48,7 @@
     "@opd/prettier-config-pangu": "^1.13.6",
     "@types/command-exists": "^1.2.0",
     "@types/debug": "^4.1.7",
-    "@types/inquirer": "^8.2.0",
+    "@types/inquirer": "^9.0.0",
     "@types/micromatch": "^4.0.2",
     "@types/signale": "^1.4.2",
     "conventional-changelog-cli": "^2.1.1",

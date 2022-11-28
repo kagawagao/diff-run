@@ -61,7 +61,7 @@
     "chalk": "5.1.2",
     "command-exists": "^1.2.9",
     "commander": "^9.0.0",
-    "cosmiconfig": "^7.0.1",
+    "cosmiconfig": "^8.0.0",
     "debug": "^4.3.2",
     "git-repo-info": "^2.1.1",
     "inquirer": "^9.0.0",

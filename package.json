@@ -51,7 +51,7 @@
     "@types/inquirer": "^9.0.0",
     "@types/micromatch": "^4.0.2",
     "@types/signale": "^1.4.2",
-    "conventional-changelog-cli": "^2.1.1",
+    "conventional-changelog-cli": "^3.0.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.0",

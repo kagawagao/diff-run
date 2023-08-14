@@ -54,7 +54,7 @@
     "conventional-changelog-cli": "^3.0.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.0",
+    "lint-staged": "^14.0.0",
     "typescript": "^5.0.2"
   },
   "dependencies": {

@@ -39,7 +39,7 @@
   "prettier": "@opd/prettier-config-pangu",
   "devDependencies": {
     "@babel/cli": "^7.14.3",
-    "@commitlint/cli": "^18.0.0",
+    "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^18.0.0",
     "@opd/babel-preset-lib": "^1.13.6",
     "@opd/eslint-config-pangu": "^1.13.7",

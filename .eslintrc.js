@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@opd/eslint-config-pangu'],
-};
+  extends: ['@pixas/eslint-config'],
+}

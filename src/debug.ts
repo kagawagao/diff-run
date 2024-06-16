@@ -1,5 +1,5 @@
-import _debug from 'debug'
+import _debug from 'debug';
 
-const debug = _debug('diff-run')
+const debug = _debug('diff-run');
 
-export default debug
+export default debug;

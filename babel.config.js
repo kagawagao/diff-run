@@ -1,7 +1,7 @@
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      '@pixas/babel-preset-lib',
       {
         useBuiltIns: 'usage',
         corejs: 3,
@@ -10,6 +10,5 @@ module.exports = {
         },
       },
     ],
-    '@babel/preset-typescript',
   ],
 }

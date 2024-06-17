@@ -65,7 +65,7 @@
     "cosmiconfig": "^9.0.0",
     "debug": "^4.3.5",
     "git-repo-info": "^2.1.1",
-    "inquirer": "^7.3.3",
+    "inquirer": "^9.2.11",
     "listr2": "^8.2.1",
     "micromatch": "^4.0.7",
     "please-upgrade-node": "^3.2.0",

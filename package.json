@@ -42,7 +42,7 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@pixas/babel-preset-lib": "^0.9.0",
-    "@pixas/eslint-config": "^0.9.0",
+    "@pixas/eslint-config": "^0.11.0",
     "@pixas/prettier-config": "^0.9.0",
     "@types/command-exists": "^1.2.0",
     "@types/debug": "^4.1.7",

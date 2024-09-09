@@ -43,7 +43,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@pixas/babel-preset-lib": "^0.9.0",
     "@pixas/eslint-config": "^0.9.0",
-    "@pixas/prettier-config": "^0.9.0",
+    "@pixas/prettier-config": "^0.13.0",
     "@types/command-exists": "^1.2.0",
     "@types/debug": "^4.1.7",
     "@types/inquirer": "^9.0.7",
